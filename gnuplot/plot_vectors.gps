@@ -1,0 +1,12 @@
+# Variables in use:
+# in : Input file
+
+# Set axis labels
+set xlabel "X-Axis"
+set ylabel "Y-Axis"
+set zlabel "Z-Axis"
+# Set title
+set title in noenhanced
+# Plot
+splot in using 1:2:3:4:5:6 with vectors filled head lw 2
+pause -1

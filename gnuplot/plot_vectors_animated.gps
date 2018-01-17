@@ -1,0 +1,28 @@
+# Variables in use:
+# in : Input file
+# out : Output file
+# delay : delay between gif framed
+
+# Set the output as animated gif
+set terminal gif animate delay delay
+# Set the output file
+set output out
+# Make gnuplot magic in input file
+stats in nooutput
+
+# Set Axis
+set xlabel "X-Axis"
+set ylabel "Y-Axis"
+set zlabel "Z-Axis"
+
+# Arrange axis
+set xrange[0:5]
+set yrange[-2:2]
+set zrange[0:10]
+
+do for [i=1:int(STATS_blocks)] {
+	set multiplot
+	splot in index i using 1:2:3:4:5:6 with vectors fille head lw 2
+	unset multiplot
+}
+set output
