@@ -26,6 +26,10 @@ class gplot_vector3:
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx.real + self.dx.imag) + " " + str(self.dy.imag + self.dy.real) + " " + str(self.dz.imag + self.dz.real)
 
 
+    def str_as_particle(self):
+        return str(self.x) + " " + str(self.y) + " " + str(self.z) 
+
+
     def __str__(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx) + " " + str(self.dy) + " " +  str(self.dz)
 
