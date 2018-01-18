@@ -33,9 +33,12 @@ def funnel_particles_e_field(particles, discarded_particles, iterations,
         for p in particles:
             v = e_vector(a, b, m, n, omega, lambda_mn, p.x, p.y, p.z, t)
             scale_vector(v, speed, speed, speed)
-            p.x += v.x
-            p.y += v.y
-            p.z += v.z
+            p.x += v.dx.real
+            p.y += v.dy.real
+            p.z += v.dz.real
+            p.dx = d.dx.real
+            p.dy = d.dy.real
+            p.dz = v.dz.real
 
 # Move every particle (gplot_vector3) in particles along
 # the h field at fix t
@@ -52,3 +55,6 @@ def funnel_particles_h_field(particles, discarded_particles, iterations,
             p.x += v.dx.real
             p.y += v.dy.real
             p.z += v.dz.real
+            p.dx = v.dx.real
+            p.dy = v.dy.real
+            p.dz = v.dz.real
