@@ -76,12 +76,12 @@ if ARGS.f == 'e':
         # Write particles to file
         if len(particles) > 0:
             for p in particles:
-                particles_out_fd.write(p.str_as_particle() + "\n")
+                particles_out_fd.write(p.str_as_real() + "\n")
     
         # Write discarded particles to file
         if len(discarded_particles) > 0:
             for dp in discarded_particles:
-                discarded_particles_out_fd.write(dp.str_as_particle() + "\n")
+                discarded_particles_out_fd.write(dp.str_as_real() + "\n")
 
         #End both blocks with two empty lines (gnuplot specific)
         particles_out_fd.write("\n\n")
@@ -109,12 +109,12 @@ if ARGS.f == 'h':
         # Write particles to file
         if len(particles) > 0:
             for p in particles:
-                particles_out_fd.write(p.str_as_particle() + "\n")
+                particles_out_fd.write(p.str_as_real() + "\n")
     
         # Write discarded particles to file
         if len(discarded_particles) > 0:
             for dp in discarded_particles:
-                discarded_particles_out_fd.write(dp.str_as_particle() + "\n")
+                discarded_particles_out_fd.write(dp.str_as_real() + "\n")
 
         #End both blocks with two empty lines (gnuplot specific)
         particles_out_fd.write("\n\n")
