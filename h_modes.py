@@ -86,7 +86,7 @@ def e_vector(a, b, m, n, omega, lambda_mn, x, y, z, t):
 # Returns the h_field inside specified interval at time t as a list of
 # gplot_vector3
 def h_field(a, b, m, n, omega, lambda_mn, x_min, x_max, dx,
-        y_min, y_max, dy, z_min, z_max, dz, t_min, t_max, t_step):
+        y_min, y_max, dy, z_min, z_max, dz, t):
     for t in drange(t_min, t_max, t_step):
         for z in drange(z_min, z_max, dz):
             for y in drange(y_min, y_max, dy):

@@ -24,37 +24,37 @@ def discard_particles(particles, discarded_particles, x_min, x_max,
 # Move every particle (gplot_vector3) in particles along
 # the e field at fix t
 # This way particles hopefully accumulate at e field vortices
-def funnel_particles_e_field(particles, discarded_particles, iterations,
+def funnel_particles_e_field(particles, discarded_particles,
         speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max,
         z_min, z_max, t):
-    for i in range(0, iterations):
-        discard_particles(particles, discarded_particles, x_min, x_max,
-            y_min, y_max, z_min, z_max)
-        for p in particles:
-            v = e_vector(a, b, m, n, omega, lambda_mn, p.x, p.y, p.z, t)
-            scale_vector(v, speed, speed, speed)
-            p.x += v.dx.real
-            p.y += v.dy.real
-            p.z += v.dz.real
-            p.dx = v.dx.real
-            p.dy = v.dy.real
-            p.dz = v.dz.real
+    discard_particles(particles, discarded_particles, x_min, x_max,
+    y_min, y_max, z_min, z_max)
+    for p in particles:
+        v = e_vector(a, b, m, n, omega, lambda_mn, p.x, p.y, p.z, t)
+        scale_vector(v, speed, speed, speed)
+        p.x += v.dx.real
+        p.y += v.dy.real
+        p.z += v.dz.real
+        p.dx = v.dx.real
+        p.dy = v.dy.real
+        p.dz = v.dz.real
 
 # Move every particle (gplot_vector3) in particles along
 # the h field at fix t
 # This way particles hopefully accumulate at h field vortices
-def funnel_particles_h_field(particles, discarded_particles, iterations,
+def funnel_particles_h_field(particles, discarded_particles, 
         speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max,
         z_min, z_max, t):
-    for i in range(0, iterations):
-        discard_particles(particles, discarded_particles, x_min, x_max,
-            y_min, y_max, z_min, z_max)
-        for p in particles:
-            v = h_vector(a, b, m, n, omega, lambda_mn, p.x, p.y, p.z, t)
-            scale_vector(v, speed, speed, speed)
-            p.x += v.dx.real
-            p.y += v.dy.real
-            p.z += v.dz.real
-            p.dx = v.dx.real
-            p.dy = v.dy.real
-            p.dz = v.dz.real
+    # Check for particles outsite the waveguide
+    discard_particles(particles, discarded_particles, x_min, x_max,
+        y_min, y_max, z_min, z_max)
+    # Move every particle one step
+    for p in particles:
+        v = h_vector(a, b, m, n, omega, lambda_mn, p.x, p.y, p.z, t)
+        scale_vector(v, speed, speed, speed)
+        p.x += v.dx.real
+        p.y += v.dy.real
+        p.z += v.dz.real
+        p.dx = v.dx.real
+        p.dy = v.dy.real
+        p.dz = v.dz.real
