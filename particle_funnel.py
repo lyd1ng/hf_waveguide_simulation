@@ -36,8 +36,8 @@ def funnel_particles_e_field(particles, discarded_particles, iterations,
             p.x += v.dx.real
             p.y += v.dy.real
             p.z += v.dz.real
-            p.dx = d.dx.real
-            p.dy = d.dy.real
+            p.dx = v.dx.real
+            p.dy = v.dy.real
             p.dz = v.dz.real
 
 # Move every particle (gplot_vector3) in particles along

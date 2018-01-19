@@ -1,10 +1,21 @@
 # Variables in use
 # in : Input file
+# with_vectors : If the particles should be plotted with field vector
+# vector_scale : A factor to scale the vectors with if their are plotted
 
 # Set Axis
 set xlabel "X-Axis"
 set ylabel "Y-Axis"
 set zlabel "Z-Axis"
 
-splot in using 1:2:3 with points
+# Seth title
+set title in noenhanced
+
+if ( with_vectors == 0 ) {
+	splot in using 1:2:3 with points
+}
+if ( with_vectors != 0 )
+{
+	splot in using 1:2:3:($4)*vector_scale:($5)*vector_scale:($6)*vector_scale with vectors filled head lw 2
+}
 pause -1
