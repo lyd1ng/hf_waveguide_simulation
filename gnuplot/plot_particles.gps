@@ -14,8 +14,7 @@ set title in noenhanced
 if ( with_vectors == 0 ) {
 	splot in using 1:2:3 with points
 }
-if ( with_vectors != 0 )
-{
+if ( with_vectors != 0 ) {
 	splot in using 1:2:3:($4)*vector_scale:($5)*vector_scale:($6)*vector_scale with vectors filled head lw 2
 }
 pause -1

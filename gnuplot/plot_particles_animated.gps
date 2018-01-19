@@ -2,6 +2,8 @@
 # in : Input file
 # out : Output file
 # delay : delay between gif framed
+# with_vectors: If the particles should be plotted with field vectors
+# vector_scale : A factor to scale the vectors if their are plotted
 
 # Set the output as animated gif
 set terminal gif animate delay delay
@@ -15,17 +17,21 @@ set xlabel "X-Axis"
 set ylabel "Y-Axis"
 set zlabel "Z-Axis"
 
-# Set View (static)
-set view 0, 90, 1, 1
+if ( with_vectors == 0 ) {
+	do for [i=1:int(STATS_blocks)] {
+		set multiplot
+		set title sprintf("Frame: %i", i)
+		splot in index i using 1:2:3 with points
+		unset multiplot
+	}
+}
 
-# Arrange axis
-set xrange[0:5]
-set yrange[-2:2]
-set zrange[0:10]
-
-do for [i=1:int(STATS_blocks)] {
-	set multiplot
-	splot in index i using 1:2:3 with points
-	unset multiplot
+if ( with_vectors != 0 ) {
+	do for [i=1:int(STATS_blocks)] {
+		set multiplot
+		set title sprintf("Frame: %i", i)
+		splot in index i using 1:2:3:($4)*vector_scale:($5)*vector_scale:($6)*vector_scale with vectors filled head lw 2
+		unset multiplot
+	}
 }
 set output
