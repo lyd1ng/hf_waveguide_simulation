@@ -1,0 +1,10 @@
+# Variables in use
+# in : Input file
+
+# Set Axis
+set xlabel "X-Axis"
+set ylabel "Y-Axis"
+set zlabel "Z-Axis"
+
+splot in using 1:2:3 with points
+pause -1
