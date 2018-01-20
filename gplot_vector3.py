@@ -1,6 +1,6 @@
 import math
 
-
+# A python represantation of a gnuplot 3d vector
 class gplot_vector3:
     def __init__(self, x, y, z, dx, dy, dz):
         self.x = x
@@ -10,7 +10,7 @@ class gplot_vector3:
         self.dy = dy
         self.dz = dz
 
-    
+    # Multiple ways to print the vector    
     def str_as_abs(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(abs(self.dx)) + " " + str(abs(self.dy)) + " " +  str(abs(self.dz))
 
@@ -25,7 +25,7 @@ class gplot_vector3:
     def str_as_complete(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx.real + self.dx.imag) + " " + str(self.dy.imag + self.dy.real) + " " + str(self.dz.imag + self.dz.real)
 
-
+    # deprecated
     def str_as_particle(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) 
 
@@ -33,7 +33,7 @@ class gplot_vector3:
     def __str__(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx) + " " + str(self.dy) + " " +  str(self.dz)
 
-
+    # Calculates the abs whether the vector is complex or not
     def __abs__(self):
         if isinstance(self.dx, complex) or isinstance(self.dy, complex) or isinstance(self.dz, complex):
             return math.sqrt(abs(self.dx)**2 + abs(self.dy)**2 + abs(self.dz)**2)
@@ -41,6 +41,8 @@ class gplot_vector3:
             return math.sqrt(self.dx**2 + self.dy**2 + self.dz**2)
 
 
+# The cross product of two gplot_vector3 instances
+# used to calculate the pointing vector
 def cross_product(v1, v2):
     if v1 is None or v2 is None:
         return None
