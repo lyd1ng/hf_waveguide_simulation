@@ -2,6 +2,14 @@
 # in : Input file
 # out : Output file
 # delay : delay between gif framed
+# x_min : x_min for xrange
+# x_max : x_max for xrange
+# y_min : y_min for yrange
+# y_max : y_max for yrange
+# z_min : z_min for zrange
+# z_max : z_max for zrange
+# x_angle : x angle for set view
+# y_angle : y angle for set view
 
 # Set the output as animated gif
 set terminal gif animate delay delay
@@ -15,10 +23,13 @@ set xlabel "X-Axis"
 set ylabel "Y-Axis"
 set zlabel "Z-Axis"
 
+# Set view
+set view x_angle, y_angle, 1, 1
+
 # Arrange axis
-set xrange[0:5]
-set yrange[-2:2]
-set zrange[0:10]
+set xrange[x_min:x_max]
+set yrange[y_min:y_max]
+set zrange[z_min:z_max]
 
 do for [i=1:int(STATS_blocks)] {
 	set multiplot

@@ -4,6 +4,15 @@
 # delay : delay between gif framed
 # with_vectors: If the particles should be plotted with field vectors
 # vector_scale : A factor to scale the vectors if their are plotted
+# x_min : x_min for xrange
+# x_max : x_max for xrange
+# y_min : y_min for yrange
+# y_max : y_max for yrange
+# z_min : z_min for zrange
+# z_max : z_max for zrange
+# x_angle : x angle for set view
+# y_angle : y angle for set view
+
 
 # Set the output as animated gif
 set terminal gif animate delay delay
@@ -16,6 +25,14 @@ stats in nooutput
 set xlabel "X-Axis"
 set ylabel "Y-Axis"
 set zlabel "Z-Axis"
+
+# Set view
+set view x_angle, y_angle, 1, 1
+
+# Arrange axis
+set xrange[x_min:x_max]
+set yrange[y_min:y_max]
+set zrange[z_min:z_max]
 
 if ( with_vectors == 0 ) {
 	do for [i=1:int(STATS_blocks)] {
