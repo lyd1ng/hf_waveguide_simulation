@@ -12,18 +12,26 @@ class gplot_vector3:
 
     # Multiple ways to print the vector    
     def str_as_abs(self):
-        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(abs(self.dx)) + " " + str(abs(self.dy)) + " " +  str(abs(self.dz))
+        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
+            str(abs(self.dx)) + " " + str(abs(self.dy)) + " " +\
+            str(abs(self.dz))
 
 
     def str_as_real(self):
-        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx.real) + " " + str(self.dy.real) + " " +  str(self.dz.real)
+        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
+            str(self.dx.real) + " " + str(self.dy.real) + " " +\
+            str(self.dz.real)
 
 
     def str_as_imag(self):
-        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx.imag) + " " + str(self.dy.imag) + " " +  str(self.dz.imag)
+        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
+            str(self.dx.imag) + " " + str(self.dy.imag) + " " +\
+            str(self.dz.imag)
 
     def str_as_complete(self):
-        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx.real + self.dx.imag) + " " + str(self.dy.imag + self.dy.real) + " " + str(self.dz.imag + self.dz.real)
+        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
+            str(self.dx.real + self.dx.imag) + " " + str(self.dy.imag +\
+            self.dy.real) + " " + str(self.dz.imag + self.dz.real)
 
     # deprecated
     def str_as_particle(self):
@@ -31,12 +39,15 @@ class gplot_vector3:
 
 
     def __str__(self):
-        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " + str(self.dx) + " " + str(self.dy) + " " +  str(self.dz)
+        return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
+            str(self.dx) + " " + str(self.dy) + " " +  str(self.dz)
 
     # Calculates the abs whether the vector is complex or not
     def __abs__(self):
-        if isinstance(self.dx, complex) or isinstance(self.dy, complex) or isinstance(self.dz, complex):
-            return math.sqrt(abs(self.dx)**2 + abs(self.dy)**2 + abs(self.dz)**2)
+        if isinstance(self.dx, complex) or isinstance(self.dy, complex) or\
+                isinstance(self.dz, complex):
+            return math.sqrt(abs(self.dx)**2 + abs(self.dy)**2 +
+                abs(self.dz)**2)
         else:
             return math.sqrt(self.dx**2 + self.dy**2 + self.dz**2)
 
