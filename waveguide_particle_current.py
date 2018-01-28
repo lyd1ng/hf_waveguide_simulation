@@ -27,12 +27,12 @@ parser.add_argument("--y_max", type=float, help="The maximal y coordinate", requ
 parser.add_argument("--z_min", type=float, help="The minimal z coordinate", required=True)
 parser.add_argument("--z_max", type=float, help="The maximal z coordinate", required=True)
 parser.add_argument("--t", type=float, help="Point of time", required=True)
-parser.add_argument("--particles", type=int, help="Number of particles")
-parser.add_argument("--particle_speed", type=float, help="The speed of particles")
-parser.add_argument("--iterations", type=int, help="Number of iterations")
-parser.add_argument("--final_only", type=int, help="Output just the last iteration")
-parser.add_argument("--po", help="The particle output file")
-parser.add_argument("-j", help="The cores to use for simulation", type=int, dest="cores")
+parser.add_argument("--particles", type=int, help="Number of particles", required=True)
+parser.add_argument("--particle_speed", type=float, help="The speed of particles", required=True)
+parser.add_argument("--iterations", type=int, help="Number of iterations", required=True)
+parser.add_argument("--final_only", type=int, help="Output just the last iteration", required=True)
+parser.add_argument("--po", help="The particle output file", required=True)
+parser.add_argument("-j", help="The cores to use for simulation", type=int, dest="cores", required=True)
 
 # Parse the Parameters
 ARGS = parser.parse_args()
