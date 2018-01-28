@@ -9,7 +9,7 @@
 # z_min : z_min for zrange
 # z_max : z_max for zrange
 # x_angle : x angle for set view
-# y_angle : y angle for set view
+# z_angle : z angle for set view
 
 # Set the output as animated gif
 set terminal gif animate delay delay
@@ -24,7 +24,7 @@ set ylabel "Y-Axis"
 set zlabel "Z-Axis"
 
 # Set view
-set view x_angle, y_angle, 1, 1
+set view x_angle, z_angle, 1, 1
 
 # Arrange axis
 set xrange[x_min:x_max]
