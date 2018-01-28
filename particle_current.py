@@ -2,11 +2,11 @@ from gplot_vector3 import gplot_vector3
 from h_modes import h_vector, e_vector, scale_vector
 
 
-# Discard every particle outside the boundaries and append them
-# to a seperated list
+# Discard every particle outside the boundaries
 # This way only particles inside the waveguide are updated
-def discard_particles(particles, discarded_particles, x_min, x_max,
+def discard_particles(particles, x_min, x_max,
         y_min, y_max, z_min, z_max):
+    discarded_particles = list()
     for i in range(0, len(particles)):
         if (particles[i].x < x_min or particles[i].x > x_max or
             particles[i].y < y_min or particles[i].y > y_max or
@@ -25,8 +25,8 @@ def discard_particles(particles, discarded_particles, x_min, x_max,
 # the e field at fix t
 # This way particles hopefully accumulate at e field vortices
 def funnel_particles_e_field(args):
-    particles, discarded_particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max, z_min, z_max, t = args
-    discard_particles(particles, discarded_particles, x_min, x_max,
+    particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max, z_min, z_max, t = args
+    discard_particles(particles, x_min, x_max,
     y_min, y_max, z_min, z_max)
     for p in particles:
         v = e_vector(a, b, m, n, omega, lambda_mn, p.x, p.y, p.z, t)
@@ -37,14 +37,15 @@ def funnel_particles_e_field(args):
         p.dx = v.dx.real
         p.dy = v.dy.real
         p.dz = v.dz.real
+    return particles
 
 # Move every particle (gplot_vector3) in particles along
 # the h field at fix t
 # This way particles hopefully accumulate at h field vortices
 def funnel_particles_h_field(args):
-    particles, discarded_particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max, z_min, z_max, t = args
+    particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max, z_min, z_max, t = args
     # Check for particles outsite the waveguide
-    discard_particles(particles, discarded_particles, x_min, x_max,
+    discard_particles(particles, x_min, x_max,
         y_min, y_max, z_min, z_max)
     # Move every particle one step
     for p in particles:
@@ -56,3 +57,4 @@ def funnel_particles_h_field(args):
         p.dx = v.dx.real
         p.dy = v.dy.real
         p.dz = v.dz.real
+    return particles
