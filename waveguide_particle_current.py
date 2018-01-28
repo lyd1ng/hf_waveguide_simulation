@@ -76,8 +76,8 @@ if ARGS.f == 'e':
         # Write particles to file if every iteration
         # should be safed or its the last iteration
         if (ARGS.final_only == 0 ) or ( i == ARGS.iterations - 1):
-            for result in particle_clouds: 
-                for p in result:
+            for cloud in particle_clouds: 
+                for p in cloud:
                     particles_out_fd.write(p.str_as_real() + "\n")
             # Terminate frames with "\n\n" to make gnuplot gif
             # exportation possible
@@ -99,8 +99,8 @@ if ARGS.f == 'h':
         # Write particles to file if every iteration
         # should be safed or its the last iteration
         if (ARGS.final_only == 0 ) or ( i == ARGS.iterations - 1):
-            for result in particle_clouds:
-                for p in result:
+            for cloud in particle_clouds:
+                for p in cloud:
                     particles_out_fd.write(p.str_as_real() + "\n")
             # Terminate frames with "\n\n" to make gnuplot gif
             # exportation possible
