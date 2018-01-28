@@ -47,37 +47,36 @@ particles_out_fd = open(ARGS.po, "w")
 particles_per_core = int(ARGS.particles / ARGS.cores)
 
 # Initialise the particle lists
-particles = list()
+particle_clouds = list()
 for c in range(0, ARGS.cores):
-    particles.append(list())
+    particle_clouds.append(list())
     for i in range(0, particles_per_core):
         x = ARGS.x_min + (ARGS.x_max - ARGS.x_min)*random()
         y = ARGS.y_min + (ARGS.y_max - ARGS.y_min)*random()
         z = ARGS.z_min + (ARGS.z_max - ARGS.z_min)*random()
-        particles[c].append(gplot_vector3(x, y, z, 0, 0, 0))
+        particle_clouds[c].append(gplot_vector3(x, y, z, 0, 0, 0))
 
 
 # Initialise the pool object
 pool = Pool(ARGS.cores)
-
 
 # Run the simulation if the e field is specified
 if ARGS.f == 'e':
     for i in range(0, ARGS.iterations):
 
         # Create the parameter list
-        parameter_list = [(particles[x], ARGS.particle_speed,
+        parameter_list = [(particle_clouds[x], ARGS.particle_speed,
             ARGS.a, ARGS.b, ARGS.m, ARGS.n, ARGS.w, lambda_mn, ARGS.x_min, ARGS.x_max,
             ARGS.y_min, ARGS.y_max, ARGS.z_min, ARGS.z_max, ARGS.t)
             for x in range(0, ARGS.cores)]
 
         # Move every particle one step along the e field
-        particles = pool.map(funnel_particles_e_field, parameter_list)
+        particle_clouds = pool.map(funnel_particles_e_field, parameter_list)
    
         # Write particles to file if every iteration
         # should be safed or its the last iteration
         if (ARGS.final_only == 0 ) or ( i == ARGS.iterations - 1):
-            for result in particles:
+            for result in particle_clouds: 
                 for p in result:
                     particles_out_fd.write(p.str_as_real() + "\n")
             # Terminate frames with "\n\n" to make gnuplot gif
@@ -89,18 +88,18 @@ if ARGS.f == 'h':
     for i in range(0, ARGS.iterations):
 
         # Create the parameter list
-        parameter_list = [(particles[x], ARGS.particle_speed,
+        parameter_list = [(particle_clouds[x], ARGS.particle_speed,
             ARGS.a, ARGS.b, ARGS.m, ARGS.n, ARGS.w, lambda_mn, ARGS.x_min, ARGS.x_max,
             ARGS.y_min, ARGS.y_max, ARGS.z_min, ARGS.z_max, ARGS.t)
             for x in range(0, ARGS.cores)]
 
         # Move every particle one step along the e field
-        particles = pool.map(funnel_particles_h_field, parameter_list)
+        particle_clouds = pool.map(funnel_particles_h_field, parameter_list)
    
         # Write particles to file if every iteration
         # should be safed or its the last iteration
         if (ARGS.final_only == 0 ) or ( i == ARGS.iterations - 1):
-            for result in particles:
+            for result in particle_clouds:
                 for p in result:
                     particles_out_fd.write(p.str_as_real() + "\n")
             # Terminate frames with "\n\n" to make gnuplot gif
