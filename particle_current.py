@@ -25,7 +25,8 @@ def discard_particles(particles, x_min, x_max,
 # the e field at fix t
 # This way particles hopefully accumulate at e field vortices
 def funnel_particles_e_field(args):
-    particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max, z_min, z_max, t = args
+    particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min,\
+            y_max, z_min, z_max, t = args
     discard_particles(particles, x_min, x_max,
     y_min, y_max, z_min, z_max)
     for p in particles:
@@ -43,7 +44,8 @@ def funnel_particles_e_field(args):
 # the h field at fix t
 # This way particles hopefully accumulate at h field vortices
 def funnel_particles_h_field(args):
-    particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min, y_max, z_min, z_max, t = args
+    particles, speed, a, b, m, n, omega, lambda_mn, x_min, x_max, y_min,\
+            y_max, z_min, z_max, t = args
     # Check for particles outsite the waveguide
     discard_particles(particles, x_min, x_max,
         y_min, y_max, z_min, z_max)
