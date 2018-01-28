@@ -20,19 +20,19 @@ parser.add_argument("-m", type=float, help="The m mode number", required=True)
 parser.add_argument("-n", type=float, help="The n mode number", required=True)
 parser.add_argument("-w", type=float, help="Frequency of the signale", required=True)
 parser.add_argument("-f", help="Field type to calculate (e, h)", required=True)
+parser.add_argument("-t", type=float, help="Point of time", required=True)
+parser.add_argument("-j", help="The cores to use for simulation", type=int, dest="cores", required=True)
+parser.add_argument("-o", help="The particle output file", required=True)
 parser.add_argument("--x_min", type=float, help="The minimal x coordinate", required=True)
 parser.add_argument("--x_max", type=float, help="The maximal x coordinate", required=True)
 parser.add_argument("--y_min", type=float, help="The minimal y coordinate", required=True)
 parser.add_argument("--y_max", type=float, help="The maximal y coordinate", required=True)
 parser.add_argument("--z_min", type=float, help="The minimal z coordinate", required=True)
 parser.add_argument("--z_max", type=float, help="The maximal z coordinate", required=True)
-parser.add_argument("--t", type=float, help="Point of time", required=True)
 parser.add_argument("--particles", type=int, help="Number of particles", required=True)
 parser.add_argument("--particle_speed", type=float, help="The speed of particles", required=True)
 parser.add_argument("--iterations", type=int, help="Number of iterations", required=True)
 parser.add_argument("--final_only", type=int, help="Output just the last iteration", required=True)
-parser.add_argument("--po", help="The particle output file", required=True)
-parser.add_argument("-j", help="The cores to use for simulation", type=int, dest="cores", required=True)
 
 # Parse the Parameters
 ARGS = parser.parse_args()
@@ -41,7 +41,7 @@ ARGS = parser.parse_args()
 lambda_mn = h_modes.get_lambda_mn(ARGS.w, ARGS.a, ARGS.b, ARGS.m, ARGS.n)
 
 # Open outputfile
-particles_out_fd = open(ARGS.po, "w")
+particles_out_fd = open(ARGS.o, "w")
 
 # Calculate the particles per core
 particles_per_core = int(ARGS.particles / ARGS.cores)
