@@ -27,7 +27,7 @@ def get_lambda_mn(omega, a, b, m, n):
 def hz(a, b, m, n, omega, lambda_mn, x, y, z, t):
     p1 = cos(m * pi * (x / a))
     p2 = cos(n * pi * (y / b))
-    p3 = e**(j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
+    p3 = e ** (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
     return p1 * p2 * p3
 
 
@@ -35,7 +35,7 @@ def hz(a, b, m, n, omega, lambda_mn, x, y, z, t):
 def hx(a, b, m, n, omega, lambda_mn, x, y, z, t):
     p1 = sin(m * pi * (x / a))
     p2 = cos(n * pi * (y / b))
-    p3 = e**(j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
+    p3 = e ** (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
     return p1 * p2 * p3
 
 
@@ -43,7 +43,7 @@ def hx(a, b, m, n, omega, lambda_mn, x, y, z, t):
 def hy(a, b, m, n, omega, lambda_mn, x, y, z, t):
     p1 = cos(m * pi * (x / a))
     p2 = sin(n * pi * (y / b))
-    p3 = e * (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
+    p3 = e ** (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
     return p1 * p2 * p3
 
 
@@ -59,7 +59,7 @@ def h_vector(a, b, m, n, omega, lambda_mn, x, y, z, t):
 def ex(a, b, m, n, omega, lambda_mn, x, y, z, t):
     p1 = cos(m * pi * (x / a))
     p2 = sin(n * pi * (y / b))
-    p3 = e * (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
+    p3 = e ** (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
     return p1 * p2 * p3
 
 
@@ -67,7 +67,7 @@ def ex(a, b, m, n, omega, lambda_mn, x, y, z, t):
 def ey(a, b, m, n, omega, lambda_mn, x, y, z, t):
     p1 = -sin(m * pi * (x / a))
     p2 = cos(n * pi * (y / b))
-    p3 = e * (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
+    p3 = e ** (j * (omega * t - ((2.0 * pi * z) / lambda_mn)))
     return p1 * p2 * p3
 
 
@@ -87,7 +87,7 @@ def e_vector(a, b, m, n, omega, lambda_mn, x, y, z, t):
 # Returns the h_field inside specified interval at time t as a list of
 # gplot_vector3
 def h_field(a, b, m, n, omega, lambda_mn, x_min, x_max, dx,
-        y_min, y_max, dy, z_min, z_max, dz, t):
+        y_min, y_max, dy, z_min, z_max, dz, t_min, t_max, t_step):
     for t in drange(t_min, t_max, t_step):
         for z in drange(z_min, z_max, dz):
             for y in drange(y_min, y_max, dy):
