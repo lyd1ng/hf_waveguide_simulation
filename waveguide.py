@@ -5,7 +5,6 @@
 ######################
 from cmath import *
 from argparse import ArgumentParser
-from gplot_vector3 import gplot_vector3
 import h_modes
 
 parser = ArgumentParser(allow_abbrev=False)
