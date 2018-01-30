@@ -3,8 +3,6 @@
 #    ######################
 #  ######################
 ######################
-from cmath import *
-from drange import drange
 from argparse import ArgumentParser
 from gplot_vector3 import gplot_vector3
 from particle_current import funnel_particles_e_field, funnel_particles_h_field
@@ -51,9 +49,9 @@ particle_clouds = list()
 for c in range(0, ARGS.cores):
     particle_clouds.append(list())
     for i in range(0, particles_per_core):
-        x = ARGS.x_min + (ARGS.x_max - ARGS.x_min)*random()
-        y = ARGS.y_min + (ARGS.y_max - ARGS.y_min)*random()
-        z = ARGS.z_min + (ARGS.z_max - ARGS.z_min)*random()
+        x = ARGS.x_min + (ARGS.x_max - ARGS.x_min) * random()
+        y = ARGS.y_min + (ARGS.y_max - ARGS.y_min) * random()
+        z = ARGS.z_min + (ARGS.z_max - ARGS.z_min) * random()
         particle_clouds[c].append(gplot_vector3(x, y, z, 0, 0, 0))
 
 
@@ -75,7 +73,7 @@ if ARGS.f == 'e':
    
         # Write particles to file if every iteration
         # should be safed or its the last iteration
-        if (ARGS.final_only == 0 ) or ( i == ARGS.iterations - 1):
+        if (ARGS.final_only == 0) or (i == ARGS.iterations - 1):
             for cloud in particle_clouds: 
                 for p in cloud:
                     particles_out_fd.write(p.str_as_real() + "\n")
@@ -98,7 +96,7 @@ if ARGS.f == 'h':
    
         # Write particles to file if every iteration
         # should be safed or its the last iteration
-        if (ARGS.final_only == 0 ) or ( i == ARGS.iterations - 1):
+        if (ARGS.final_only == 0) or (i == ARGS.iterations - 1):
             for cloud in particle_clouds:
                 for p in cloud:
                     particles_out_fd.write(p.str_as_real() + "\n")
