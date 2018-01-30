@@ -3,7 +3,6 @@
 #    ######################
 #  ######################
 ######################
-from cmath import *
 from argparse import ArgumentParser
 import h_modes
 
@@ -35,10 +34,10 @@ parser.add_argument("--scale_z", type=float, help="The x scale of all vectors", 
 # Parse the Parameters
 ARGS = parser.parse_args()
 
-#Calculate the lambda_mn
+# Calculate the lambda_mn
 lambda_mn = h_modes.get_lambda_mn(ARGS.w, ARGS.a, ARGS.b, ARGS.m, ARGS.n)
 
-#Open outputfile
+# Open outputfile
 output_fd = open(ARGS.o, "w")
 
 if ARGS.f == 'e':
@@ -47,7 +46,7 @@ if ARGS.f == 'e':
             ARGS.y_min, ARGS.y_max, ARGS.y_step,
             ARGS.z_min, ARGS.z_max, ARGS.z_step,
             ARGS.t_min, ARGS.t_max, ARGS.t_step):
-        if ( v is not None ):
+        if (v is not None):
             h_modes.scale_vector(v, ARGS.scale_x, ARGS.scale_y, ARGS.scale_z)
             output_fd.write(v.str_as_real() + "\n")
         else:
@@ -59,7 +58,7 @@ if ARGS.f == 'h':
             ARGS.y_min, ARGS.y_max, ARGS.y_step,
             ARGS.z_min, ARGS.z_max, ARGS.z_step,
             ARGS.t_min, ARGS.t_max, ARGS.t_step):
-        if ( v is not None ):
+        if (v is not None):
             h_modes.scale_vector(v, ARGS.scale_x, ARGS.scale_y, ARGS.scale_z)
             output_fd.write(v.str_as_real() + "\n")
         else:
@@ -71,7 +70,7 @@ if ARGS.f == 'p':
             ARGS.y_min, ARGS.y_max, ARGS.y_step,
             ARGS.z_min, ARGS.z_max, ARGS.z_step,
             ARGS.t_min, ARGS.t_max, ARGS.t_step):
-        if ( v is not None ):
+        if (v is not None):
             h_modes.scale_vector(v, ARGS.scale_x, ARGS.scale_y, ARGS.scale_z)
             output_fd.write(v.str_as_real() + "\n")
         else:
