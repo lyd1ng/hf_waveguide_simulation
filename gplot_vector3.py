@@ -1,5 +1,6 @@
 import math
 
+
 # A python represantation of a gnuplot 3d vector
 class gplot_vector3:
     def __init__(self, x, y, z, dx, dy, dz):
@@ -10,18 +11,16 @@ class gplot_vector3:
         self.dy = dy
         self.dz = dz
 
-    # Multiple ways to print the vector    
+    # Multiple ways to print the vector
     def str_as_abs(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
             str(abs(self.dx)) + " " + str(abs(self.dy)) + " " +\
             str(abs(self.dz))
 
-
     def str_as_real(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
             str(self.dx.real) + " " + str(self.dy.real) + " " +\
             str(self.dz.real)
-
 
     def str_as_imag(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
@@ -30,17 +29,16 @@ class gplot_vector3:
 
     def str_as_complete(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
-            str(self.dx.real + self.dx.imag) + " " + str(self.dy.imag +\
+            str(self.dx.real + self.dx.imag) + " " + str(self.dy.imag +
             self.dy.real) + " " + str(self.dz.imag + self.dz.real)
 
     # deprecated
     def str_as_particle(self):
-        return str(self.x) + " " + str(self.y) + " " + str(self.z) 
-
+        return str(self.x) + " " + str(self.y) + " " + str(self.z)
 
     def __str__(self):
         return str(self.x) + " " + str(self.y) + " " + str(self.z) + " " +\
-            str(self.dx) + " " + str(self.dy) + " " +  str(self.dz)
+            str(self.dx) + " " + str(self.dy) + " " + str(self.dz)
 
     # Calculates the abs whether the vector is complex or not
     def __abs__(self):
@@ -58,8 +56,7 @@ def cross_product(v1, v2):
     if v1 is None or v2 is None:
         return None
     result = gplot_vector3(v1.x, v1.y, v1.z, 0, 0, 0)
-    result.dx = v1.dy*v2.dz - v1.dz*v2.dy
-    result.dy = v1.dz*v2.dx - v1.dx*v2.dz
-    result.dz = v1.dx*v2.dy - v1.dy*v2.dx
+    result.dx = v1.dy * v2.dz - v1.dz * v2.dy
+    result.dy = v1.dz * v2.dx - v1.dx * v2.dz
+    result.dz = v1.dx * v2.dy - v1.dy * v2.dx
     return result
-
